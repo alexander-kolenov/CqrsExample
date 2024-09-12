@@ -1,5 +1,6 @@
 
 using Application;
+using WeatherRepository;
 
 namespace CqrsExample
 {
@@ -9,9 +10,11 @@ namespace CqrsExample
       {
          var builder = WebApplication.CreateBuilder(args);
 
+         
+
          // Add services to the container.
          builder.Services.AddApplicationServices();
-
+         builder.Services.AddWeatherRepository(builder.Configuration.GetConnectionString("WeatherDb") ?? throw new Exception("WeatherDb does not exist in configuration"));
 
          builder.Services.AddControllers();
          // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,6 +36,7 @@ namespace CqrsExample
 
 
          app.MapControllers();
+         app.MapGet("/", context => Task.Run(() => context.Response.Redirect("/swagger/index.html")));
 
          app.Run();
       }

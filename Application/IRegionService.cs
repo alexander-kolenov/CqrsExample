@@ -4,6 +4,6 @@ namespace Application;
 
 public interface IRegionService
 {
-   Task<Region> GetRegionAsync(int RegionId);
    Task<int> AddRegionAsync(string regionName);
+   Task<Region> GetRegionIdAsync(string regionName);
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Controllers\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherRepository", "WeatherRepository\WeatherRepository.csproj", "{476FDBC4-196A-40AA-A928-44AFABA5A8FD}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{476FDBC4-196A-40AA-A928-44AFABA5A8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{476FDBC4-196A-40AA-A928-44AFABA5A8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{476FDBC4-196A-40AA-A928-44AFABA5A8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

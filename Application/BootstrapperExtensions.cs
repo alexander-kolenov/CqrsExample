@@ -9,7 +9,9 @@ public static class BootstrapperExtensions
    {
       services.AddScoped<IRegionService, RegionService>();
       services.AddScoped<IWeatherService, WeatherService>();
-      
+
+      services.AddAutoMapper(typeof(MappingProfile));
+
       return services;
    }
 }

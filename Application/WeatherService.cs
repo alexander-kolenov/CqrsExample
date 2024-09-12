@@ -1,16 +1,47 @@
-﻿using Domain.Models;
+﻿using AutoMapper;
+using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application;
 
 public class WeatherService : IWeatherService
 {
-   public Task AddWeatherAsync(string regionName, Weather weather)
+   public WeatherRepository.Models.WeatherExampleDbContext _db;
+   public IRegionService _regionService;
+   public IMapper _mapper;
+
+   public WeatherService(
+      WeatherRepository.Models.WeatherExampleDbContext db,
+      IRegionService regionService,
+      IMapper mapper)
    {
-      throw new NotImplementedException();
+      _db = db;
+      _regionService = regionService;
+      _mapper = mapper;
    }
 
-   public Task<Weather> GetWeatherAsync(string regionName)
+   public async Task AddWeatherAsync(string regionName, Weather weather)
    {
-      throw new NotImplementedException();
+      var region = await _regionService.GetRegionIdAsync(regionName);
+
+      _db.Weathers.Add(new WeatherRepository.Models.Weather
+      {
+         Temperature = weather.Temperature,
+         RegionId = region.Id,
+      });
+      await _db.SaveChangesAsync();
+   }
+
+   public async Task<Weather> GetWeatherAsync(string regionName)
+   {
+      var region = await _regionService.GetRegionIdAsync(regionName);
+
+      var weather = await _db.Weathers
+         .Where(x => x.RegionId == region.Id)
+         .OrderByDescending(x => x.Id)
+         .FirstOrDefaultAsync()
+         ?? throw new Exception("Weather not found");
+
+      return _mapper.Map<Weather>(weather);
    }
 }
