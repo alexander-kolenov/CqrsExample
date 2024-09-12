@@ -2,7 +2,11 @@
 # CQRS example
 
 > I wrote this code as ugly as possible.\
-> But trying to use all principles of onion architecture.
+> But, I am trying to use all principles of onion architecture.
+
+So the **challenge** is to fix all the architectural problems.
+using the `MediatR` library,
+to make it extremely SQRS-able.
 
 ## Db initialization script
 
