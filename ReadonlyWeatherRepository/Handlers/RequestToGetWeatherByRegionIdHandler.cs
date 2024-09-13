@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
-using Domain.Requests.WeatherRepository;
+using Domain.Requests.ReadonlyWeatherRepository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WeatherRepository.Models;
+using ReadonlyWeatherRepository.Models;
 
-namespace WeatherRepository.Handlers;
+namespace ReadonlyWeatherRepository.Handlers;
 
 public class RequestToGetWeatherByRegionIdHandler :
    IRequestHandler<RequestToGetWeatherByRegionId, Domain.Models.Weather>
 {
-   public WeatherExampleDbContext _db;
+   public ReadonlyWeatherExampleDbContext _db;
    public IMapper _mapper;
    private readonly ILogger<RequestToGetWeatherByRegionIdHandler> _logger;
 
    public RequestToGetWeatherByRegionIdHandler(
-      WeatherExampleDbContext db,
+      ReadonlyWeatherExampleDbContext db,
       IMapper mapper,
       ILogger<RequestToGetWeatherByRegionIdHandler> logger)
    {

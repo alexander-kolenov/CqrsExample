@@ -1,4 +1,5 @@
 ﻿using Domain.Requests.Application;
+using Domain.Requests.ReadonlyWeatherRepository;
 using Domain.Requests.WeatherRepository;
 using MediatR;
 using Microsoft.Extensions.Logging;

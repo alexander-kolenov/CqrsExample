@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 using Domain.Requests.Application;
-using Domain.Requests.WeatherRepository;
+using Domain.Requests.ReadonlyWeatherRepository;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

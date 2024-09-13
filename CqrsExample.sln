@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CqrsExample", "CqrsExample\CqrsExample.csproj", "{66522192-EA20-4A29-92F3-30C3F5B02331}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsExample", "CqrsExample\CqrsExample.csproj", "{66522192-EA20-4A29-92F3-30C3F5B02331}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{26AE2C2D-D01D-4CE8-B29C-A4984583842F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{26AE2C2D-D01D-4CE8-B29C-A4984583842F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{C92211CA-CA5F-41B9-A6C3-A040E2712A62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{C92211CA-CA5F-41B9-A6C3-A040E2712A62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers", "Controllers\Controllers.csproj", "{15198F8C-E491-48F2-A7F5-5618CBA0588B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controllers", "Controllers\Controllers.csproj", "{15198F8C-E491-48F2-A7F5-5618CBA0588B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherRepository", "WeatherRepository\WeatherRepository.csproj", "{476FDBC4-196A-40AA-A928-44AFABA5A8FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherRepository", "WeatherRepository\WeatherRepository.csproj", "{476FDBC4-196A-40AA-A928-44AFABA5A8FD}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadonlyWeatherRepository", "ReadonlyWeatherRepository\ReadonlyWeatherRepository.csproj", "{1DFA3D41-4FBE-4C66-A3E7-D3C3FA3B4165}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC4D98E5-2D29-447D-8B43-DD45E9E4149C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFA3D41-4FBE-4C66-A3E7-D3C3FA3B4165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFA3D41-4FBE-4C66-A3E7-D3C3FA3B4165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFA3D41-4FBE-4C66-A3E7-D3C3FA3B4165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFA3D41-4FBE-4C66-A3E7-D3C3FA3B4165}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
