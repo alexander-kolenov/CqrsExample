@@ -9,7 +9,6 @@ public static class BootstrapperExtensions
    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
    {
       services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-      services.AddAutoMapper(typeof(MappingProfile));
 
       return services;
    }

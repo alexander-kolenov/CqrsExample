@@ -1,4 +1,3 @@
-
 using Application;
 using WeatherRepository;
 

@@ -1,5 +1,6 @@
-using Application;
 using Domain.Models;
+using Domain.Requests.Application;
+using Domain.Requests.WeatherRepository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -22,18 +23,29 @@ public class WeatherForecastController : ControllerBase
    [HttpGet("GetWeather")]
    public Task<Weather> GetWeather(string regoinName, CancellationToken ct)
    {
-      return _mediator.Send(new GetWeather.Command(regoinName), ct);
+      return _mediator.Send(new RequestToGetWeatherByRegionName(regoinName), ct);
    }
 
    [HttpPost("AddWeather")]
    public Task AddWeather(string regoinName, double temperature, CancellationToken ct)
    {
-      return _mediator.Send(new SetWeather.Command(regoinName, temperature), ct);
+      return _mediator.Send(new RequestToSetWeatherByRegionName(
+         regoinName,
+         new Weather
+         {
+            Temperature = temperature,
+         }),
+         ct);
    }
 
    [HttpPost("AddRegion")]
-   public Task AddRegion(string regionName, CancellationToken ct)
+   public async Task AddRegion(string regionName, CancellationToken ct)
    {
-      return _mediator.Send(new Application.Region.AddCommand(regionName), ct);
+      await _mediator.Send(new RequestToAddNewRegion(
+         new Region 
+         {
+            Name = regionName
+         }),
+         ct);
    }
 }
