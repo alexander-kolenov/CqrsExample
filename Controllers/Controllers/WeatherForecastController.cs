@@ -1,5 +1,6 @@
 using Application;
 using Domain.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -9,41 +10,30 @@ namespace Controllers.Controllers;
 [Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-   private readonly IRegionService _regionService;
-   private readonly IWeatherService _weatherService;
+   private readonly IMediator _mediator;
    private readonly ILogger<WeatherForecastController> _logger;
 
-   public WeatherForecastController(
-      IRegionService regionService,
-      IWeatherService weatherService,
-      ILogger<WeatherForecastController> logger)
+   public WeatherForecastController(IMediator mediator, ILogger<WeatherForecastController> logger)
    {
-      _regionService = regionService;
-      _weatherService = weatherService;
+      _mediator = mediator;
       _logger = logger;
    }
 
-
    [HttpGet("GetWeather")]
-   public Task<Weather> GetWeather(string regoinName)
+   public Task<Weather> GetWeather(string regoinName, CancellationToken ct)
    {
-      return _weatherService.GetWeatherAsync(regoinName);
+      return _mediator.Send(new GetWeather.Command(regoinName), ct);
    }
 
    [HttpPost("AddWeather")]
-   public Task AddWeather(string regoinName, double temperature)
+   public Task AddWeather(string regoinName, double temperature, CancellationToken ct)
    {
-      return _weatherService.AddWeatherAsync(
-         regoinName,
-         new Weather
-         {
-            Temperature = temperature
-         });
+      return _mediator.Send(new SetWeather.Command(regoinName, temperature), ct);
    }
 
    [HttpPost("AddRegion")]
-   public Task AddRegion(string regionName)
+   public Task AddRegion(string regionName, CancellationToken ct)
    {
-      return _regionService.AddRegionAsync(regionName);
+      return _mediator.Send(new Application.Region.AddCommand(regionName), ct);
    }
 }
