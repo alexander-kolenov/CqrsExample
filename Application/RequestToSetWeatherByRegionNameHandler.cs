@@ -3,6 +3,7 @@ using Domain.Requests.ReadonlyWeatherRepository;
 using Domain.Requests.WeatherRepository;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using System.Transactions;
 
 namespace Application;
 
@@ -22,8 +23,13 @@ public class RequestToSetWeatherByRegionNameHandler :
 
    public async Task<Unit> Handle(RequestToSetWeatherByRegionName request, CancellationToken cancellationToken)
    {
-      var region = await _mediator.Send(new RequestToGetRegionByName(request.RegionName), cancellationToken);
-      var weather = await _mediator.Send(new RequestToSetWeatherByRegionId(region.Id, request.Weather), cancellationToken);
-      return Unit.Value;
+      using (var transScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+      {
+         var region = await _mediator.Send(new RequestToGetRegionByName(request.RegionName), cancellationToken);
+         var weather = await _mediator.Send(new RequestToSetWeatherByRegionId(region.Id, request.Weather), cancellationToken);
+
+         transScope.Complete();
+         return Unit.Value;
+      }
    }
 }
